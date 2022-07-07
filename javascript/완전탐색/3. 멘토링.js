@@ -14,6 +14,11 @@
 // 3412 4321 3142
 // ▣ 출력예제 1 3
 
+// 배운점
+// 1. array.indexOf == -1 이면 값이 없는것
+// 2. 문자열 뒤집기 : string.split("").reverse().join("") -> split으로로 문자열 자르고 배열로 만든후, revers로 배열을 뒤집는다. 그후 다시 ""기준으로 배열을 합친다
+// 3. 배열에서 반복되는 값 삭제 : ...new Set(answer)
+
 function solution(arr) {
   var answer = [];
   var mix_array = [];
@@ -25,14 +30,15 @@ function solution(arr) {
         }
       }
     }
-    for (b of mix_array) {
-      if (mix_array.indexOf(b.split("").reverse().join("")) !== -1) {
-        answer.push(b);
-      }
-    }
-    var result1 = [...new Set(answer)];
   }
-  return result1;
+  for (b of mix_array) {
+    if (mix_array.indexOf(b.split("").reverse().join("")) == -1) {
+      answer.push(b);
+    }
+  }
+  var result = [...new Set(answer)];
+
+  return result.length;
 }
 
 let arr = [
